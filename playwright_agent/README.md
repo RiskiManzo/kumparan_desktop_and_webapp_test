@@ -22,8 +22,6 @@ Post-execution risk scoring, candidate defects and residual risk based on the ge
 
 | File | Purpose |
 | --- | --- |
-| [kumparan_test_plan.md](./kumparan_test_plan.md) | Test plan the specs were generated from. |
-| [risk_analysis.md](./risk_analysis.md) | Risk register scored from the executed suite. |
 | [testcase/test_case_generated.md](./testcase/test_case_generated.md) | Test case table (expected vs actual). |
 | [specs/test_generation.md](./specs/test_generation.md) | The prompt/instruction used for generation. |
 
