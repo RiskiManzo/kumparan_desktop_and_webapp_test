@@ -18,9 +18,9 @@ located on @kumparan_test
 
 ## Playwright - Agents
 
-located on @playwright_agent
+located on /playwright_agent
 
 
 ## Playwright - GraphQL
 
-located on @graphql_test
+located on /graphql_test
