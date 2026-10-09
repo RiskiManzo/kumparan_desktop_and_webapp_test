@@ -15,7 +15,6 @@ test.describe('Mobile site', () => {
   });
 
   test('able to click a headline card and navigate to the article page @mobile', async ({ page, homePage }) => {
-    // m.kumparan.com renders cards as headline-card, not news-card / news-item
     const headlineTitle = page
       .getByTestId('headline-card')
       .first()
