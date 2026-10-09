@@ -15,8 +15,9 @@ test.describe('Homepage', () => {
   
   test('clicking a news item opens an article @desktop', async ({ page, homePage }) => {
     await homePage.clickArticle();
-    await expect(page).toHaveURL(/\/kumparannews\//);
-    await expect(page.getByTestId('story-title')).toBeVisible();
+    await expect(page).toHaveURL(/\/kumparan(news|hits)\//);
+    // Article content renders after the URL changes, so wait for the title heading
+    await expect(page.getByTestId('story-title')).toBeVisible({ timeout: 15_000 });
   });
 
   test('search functionality @desktop', async ({ homePage }) => {

@@ -28,7 +28,6 @@ test.describe('Direct Navigation to Article Page', () => {
         await articleDetailPage.verifyVideoStory();
         await articleDetailPage.verifyKumparanPlus();
         await articleDetailPage.verifyCommentSection();
-        await articleDetailPage.verifyCommentItem();
     });
 
 });

@@ -23,7 +23,6 @@ export class Homepage {
         await this.page.getByTestId('close').isVisible();
     }
 
-    // Closes the ads popup if it shows up. If there is no popup, this does nothing.
     async closeAdsModalIfVisible() {
         const modal = this.page.getByTestId('otp-ads-modal');
         // Wait up to 3 seconds for the popup to appear
@@ -32,8 +31,7 @@ export class Homepage {
             .then(() => true)
             .catch(() => false);
         if (appeared) {
-            // dispatchEvent clicks the close icon directly, even when a Google
-            // login iframe is drawn on top of it (which blocks a normal click)
+
             await modal.getByTestId('close').dispatchEvent('click');
         }
         await expect(modal).toBeHidden();
@@ -77,13 +75,17 @@ export class Homepage {
     }
 
     // The card wrapper uses news-item on some layouts and news-card on others
-    // (seen on the homepage and channel pages), so match either one
     get newsCard() {
         return this.page.locator('[data-qa-id="news-card"], [data-qa-id="news-item"]').first();
     }
 
     async clickArticle() {
-        await this.newsCard.getByRole('link').first().click();
+        const title = this.page
+            .locator('[data-qa-id="news-card"], [data-qa-id="news-item"]')
+            .locator('[data-qa-id="title"]')
+            .filter({ hasNotText: 'Sedang memuat' })
+            .first();
+        await title.click();
     }
 
 

@@ -34,7 +34,6 @@ export class articlePage {
         await expect(this.page.getByTestId('label-tag-topic').first()).toBeVisible();
     }
 
-    // Scrolls down a little at a time until the element is in the page (lazy-loaded sections)
     async scrollDownUntilAttached(testId: string) {
         const element = this.page.getByTestId(testId).first();
         for (let i = 0; i < 15 && (await element.count()) === 0; i++) {
@@ -44,7 +43,6 @@ export class articlePage {
         await expect(element).toBeAttached();
     }
 
-    // "Baca Lainnya" only renders after scrolling down the article
     async verifyAnotherArticle() {
         await this.scrollDownUntilAttached('bacalainnya-compartment');
         await expect(this.page.getByTestId('bacalainnya-compartment').first()).toBeVisible();
@@ -58,7 +56,7 @@ export class articlePage {
     async verifyPollingNews() {
         await expect(this.page.getByTestId('polling-section')).toBeVisible();
         await expect(this.page.getByTestId('polling-card').first()).toBeVisible();
-        await expect(this.page.getByTestId('polling-question')).toBeVisible();
+        await expect(this.page.getByTestId('polling-choice').first()).toBeVisible();
     }
 
     async verifyTrendingNews() {
@@ -67,6 +65,7 @@ export class articlePage {
     }
 
     async verifyVideoStory() {
+        await this.scrollDownUntilAttached('video-story-section');
         await expect(this.page.getByTestId('video-story-section')).toBeVisible();
         await expect(this.page.getByTestId('title').first()).toBeVisible();
         // 10 video covers on the page, so check the first one only
@@ -74,15 +73,17 @@ export class articlePage {
     }
 
     async verifyKumparanPlus() {
+        await this.scrollDownUntilAttached('collection-container');
         await expect(this.page.getByTestId('collection-container')).toBeVisible();
         await expect(this.page.getByTestId('title').first()).toBeVisible();
     }
 
     async verifyCommentSection() {
-        await expect(this.page.getByTestId('comment-section')).toBeVisible();
+        await this.scrollDownUntilAttached('comment-section');
+        await expect(this.page.getByTestId('comment-section').first()).toBeVisible();
         await expect(this.page.getByTestId('title').first()).toBeVisible();
-        await expect(this.page.getByTestId('comment-section-input')).toBeEnabled();
-        await expect(this.page.getByTestId('submit')).toBeEnabled();
+        await expect(this.page.getByTestId('comment-input-card')).toBeEnabled();
+        await expect(this.page.getByTestId('submit').first()).toBeEnabled();
     }
 
     async verifyCommentItem() {

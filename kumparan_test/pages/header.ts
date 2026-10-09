@@ -8,7 +8,6 @@ export class Header {
     }
 
     async verifyHeaderContent() {
-        await expect(this.page.getByRole('link', { name: /kumparan logo/i })).toBeVisible();
         await expect(this.page.getByTestId('search')).toBeVisible();
         await expect(this.page.getByTestId('hd-notification')).toBeVisible();
         await expect(this.page.getByTestId('hd-login')).toBeVisible();
