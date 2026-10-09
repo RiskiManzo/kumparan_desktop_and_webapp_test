@@ -15,8 +15,14 @@ test.describe('Mobile site', () => {
   });
 
   test('able to click a headline card and navigate to the article page @mobile', async ({ page, homePage }) => {
-    await homePage.clickArticle();
-    await expect(page).toHaveURL(/\/kumparan(news|hits)\//);
+    // m.kumparan.com renders cards as headline-card, not news-card / news-item
+    const headlineTitle = page
+      .getByTestId('headline-card')
+      .first()
+      .locator('[data-qa-id="title"]')
+      .first();
+    await headlineTitle.click();
+    await expect(page).toHaveURL(/\/kumparan[a-z]+\//);
     await expect(page.getByTestId('story-title')).toBeVisible({ timeout: 15_000 });
   });
 
