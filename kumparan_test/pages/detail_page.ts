@@ -12,13 +12,12 @@ export class articlePage {
         await this.header.verifyHeaderContent();
         await expect(this.page.getByTestId('story-title')).toBeVisible();
         await expect(this.page.getByTestId('below-image-ads')).toBeVisible();
-        // 8 paragraphs on the page, so check the first one only
         await expect(this.page.getByTestId('story-paragraph').first()).toBeVisible();
         await expect(this.page.getByTestId('author-name')).toBeVisible();
         await expect(this.page.getByTestId('publish-date')).toBeVisible();
         await expect(this.page.getByTestId('btn-like')).toBeVisible();
         await expect(this.page.getByTestId('comment')).toBeVisible();
-        await expect(this.page.getByTestId('image-figure')).toBeVisible();
+        await expect(this.page.getByTestId('image-figure').first()).toBeVisible();
     }
 
     async clickOnLikeButton() {
