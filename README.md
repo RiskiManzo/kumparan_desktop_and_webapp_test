@@ -4,9 +4,7 @@ This project is a small test initiative focused on validating a defined use case
 
 ## Test Case
 
-The committed test case is documented here:
-
-https://docs.google.com/document/d/17U_o_sonpMIq1cIMcuUcRIeEBE7POsw4uxydMDvPy_4/edit?tab=t.0
+/test_case/test_case_kumparan_mabual_.md
 
 This document provides the baseline for the project review and helps confirm that the committed changes align with the intended scope and expected result.
 
